@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+
+<script>
+	function pulaLinha() {
+		document.write("<br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+
+	const distanciaPercorrida = parseFloat(prompt("Qual a distância percorrida da sua casa até seu trabalho (em Km)?"));
+
+	const consumoMedio = parseFloat(prompt("Qual o consumo médio do seu veículo (em Km/L)?"));
+
+	const consumoNecessarioLitros = Math.round(distanciaPercorrida / consumoMedio);
+
+	const quantidadePostosPesquisados = parseInt(prompt("Em quantos postos você pesquisou?"));
+	let somaDosCombustiveis = 0;
+	let menorValor = Infinity;
+
+	for(let indice = 0; indice < quantidadePostosPesquisados; indice++) {
+		let valorCombustivelPesquisado = parseFloat(prompt(`Digite o valor encontrado (em R$) no posto ${indice+1}:`));
+
+		if (valorCombustivelPesquisado < menorValor) {
+			menorValor = valorCombustivelPesquisado;
+		}
+
+	    somaDosCombustiveis = somaDosCombustiveis + valorCombustivelPesquisado
+    }
+
+	const media = somaDosCombustiveis / quantidadePostosPesquisados;
+
+	const gastoDiario = 2 * (consumoNecessarioLitros * menorValor);
+
+	mostra(`O consumo necessário é de ${consumoNecessarioLitros} litros.`);
+
+	mostra(`O menor valor pesquisado é R$${menorValor}.`);
+
+	mostra(`A média dos valores pesquisados é R$${media}.`);
+
+	mostra(`O gasto diário (ida e volta) é R$${gastoDiario}.`); 
+
+
+</script>
